@@ -1,0 +1,64 @@
+@import "./src/styles/utils/variables";
+@import "./src/styles/utils/mixin";
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    @include layout-components($main-color, 25%)
+}
+
+.formMessage {
+    display: flex;
+    align-items: end;
+    flex-basis: 100%;
+    padding: 10px;
+    margin-top: auto;
+}
+
+.listMessage {
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.messageBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.name, .time {
+    font-size: 12px;
+}
+
+.messageBox + .messageBox {
+    margin-top: 8px;
+}
+
+.message:nth-child(odd) {
+    background-color: lighten($main-color, 90%);
+}
+
+.message:nth-child(even) {
+    background-color: darken($main-color, 10%);
+}
+
+
+
+.inputMessage {
+    flex-basis: inherit;
+    margin-right: 20px;
+}
+
+.buttonMessage {
+    align-self: end;
+    width: 150px;
+}

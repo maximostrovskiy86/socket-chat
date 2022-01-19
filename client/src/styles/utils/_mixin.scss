@@ -1,0 +1,26 @@
+@import "./variables";
+//@mixin color-transitions($color) {
+//    color: $color;
+//    transition: color 250ms $timing-function;
+//}
+//
+//@mixin fill-transitions($color) {
+//    fill: $color;
+//    transition: color 250ms $timing-function;
+//}
+//
+//@mixin flex-center($x, $y) {
+//    display: flex;
+//    justify-content: $x;
+//    align-items: $y;
+//}
+
+@mixin layout-components($color, $percent) {
+    background-color: darken($color, $percent);
+    min-height: 65vh;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+}

@@ -1,0 +1,58 @@
+@import "./src/styles/utils/variables";
+
+.user {
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.userAdmin {
+  composes: user;
+  display: inline-block;
+  height: auto;
+}
+.user + .user {
+  margin-top: 5px;
+}
+
+.user:nth-child(odd) {
+  background-color: $user-color;
+}
+
+.user:nth-child(even) {
+  background-color: lighten($user-color, 20%);
+}
+
+.admin {
+  display: block;
+  margin-top: 2px;
+}
+
+.button {
+  min-width: 70px;
+  padding: 0.15rem 0.5rem;
+}
+
+.button + .button {
+  margin-left: 5px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+.online {
+    composes: status;
+    color: #0cc26d;
+}
+
+.offline {
+    composes: status;
+    color: #d50a0a;
+}

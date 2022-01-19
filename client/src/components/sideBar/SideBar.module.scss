@@ -1,0 +1,19 @@
+@import "./src/styles/utils/variables";
+@import "./src/styles/utils/mixin";
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  @include layout-components($main-color, 5%)
+}
+
+.logOut {
+  margin-left: auto;
+  align-self: self-start;
+}
+
+.listUsers {
+  margin-top: 15px;
+  height: 50vh;
+  overflow-y: auto;
+}

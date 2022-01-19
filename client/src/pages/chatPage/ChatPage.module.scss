@@ -1,0 +1,14 @@
+.chat {
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.rowBox {
+    flex-direction: column-reverse;
+}
+
+@media screen and (min-width: 576px) {
+    .rowBox {
+        flex-direction: row;
+    }
+}
