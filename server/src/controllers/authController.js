@@ -69,44 +69,16 @@ export const verifyController = (req, res) => {
   }
 };
 
-export const getAllUsersController = async (usersOnline, req, res) => {
+export const getAllUsersController = async (usersOnline) => {
   try {
     const users = await getAllUsers();
-    console.log("USERS", users);
-    console.log("USERS_ONLINE", usersOnline);
-    const online = users.map((user) => ({
+    return users.map((user) => ({
       ...user.toObject(),
       isOnline: usersOnline.some((u) => u.id === user.id),
     }));
-
-    // const online = users.map((user, i) => {
-    //   console.log("USERSSSS", user);
-    //   console.log(i, usersOnline.includes(user));
-    //   return {
-    //     ...user.toObject(),
-    //   };
-    // });
-
-    // isOnline: usersOnline.includes(user),
-    // isOnline: usersOnline.every((u) => u.id === user.id),
-
-    // const useras = usersOnline.map((u) => {
-    //   console.log("U", u);
-    // });
-
-    // const online = users.map((user) => {
-    //
-    //
-    //   console.log("useras", useras);
-    // });
-
-    // eslint-disable-next-line no-underscore-dangle
-    console.log("KKKKKKK", online);
-    return online;
-    // return users;
   } catch (e) {
     // res.status(400).json({ message: "Login error" });
-    console.log(e.message);
+    throw e;
   }
 };
 

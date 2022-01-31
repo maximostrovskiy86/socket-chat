@@ -42,12 +42,12 @@ const start = async () => {
 
       const user = decodeJwt(verifyToken);
 
-      if (!user) {
-        socket.disconnect();
+      if (!user || user.isBanned) {
+        socket.disconnect(true);
+        return;
       }
 
       // get user from db by id and test for ban status
-
       const sockets = await io.fetchSockets();
       const exists = sockets.find((s) => s.user.id === user.id);
 
@@ -56,7 +56,6 @@ const start = async () => {
       }
 
       // await changeUserById(user.id, { isOnline: true });
-
       socket.user = user;
       next();
     });
@@ -126,7 +125,13 @@ const start = async () => {
         // );
 
         await changeUserById(id, { isBanned: !isBanned });
-        socket.emit("GET_ALL_USERS", await getAllUsersController(usersOnline));
+        try {
+          const users = await getAllUsersController(usersOnline);
+          socket.emit("GET_ALL_USERS", users);
+        } catch (e) {
+          socket.emit("GET_ALL_USERS_ERROR", e.message);
+        }
+        // socket.emit("GET_ALL_USERS", await getAllUsersController(usersOnline));
       });
 
       socket.on("ON_MUTE", async ({ id, isMuted }) => {
@@ -143,6 +148,7 @@ const start = async () => {
         const exists = sock.find((s) => s.user.id === id);
 
         if (exists) {
+          console.log("USER_UPDATE", user);
           exists.emit("USER_UPDATE", user);
         }
       });

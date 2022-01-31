@@ -1,8 +1,8 @@
 @import "../../../styles/utils/variables";
 
-//.logOutButton {
-//    transition: fill 250ms $timing-function;
-//    &:hover {
-//        fill: lighten($main-txt-color, 20%);
-//    }
-//}
+.logOutButton {
+    transition: fill 250ms $timing-function;
+    &:hover {
+        fill: lighten($main-txt-color, 20%);
+    }
+}

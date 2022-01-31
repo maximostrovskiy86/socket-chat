@@ -18,7 +18,9 @@
 
 .listMessage {
     height: 50vh;
-    overflow-y: auto;
+    //overflow-y: auto;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .messageBox {
@@ -50,8 +52,6 @@
 .message:nth-child(even) {
     background-color: darken($main-color, 10%);
 }
-
-
 
 .inputMessage {
     flex-basis: inherit;

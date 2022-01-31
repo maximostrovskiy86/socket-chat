@@ -111,7 +111,8 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find().select("-password");
     return users;
   } catch (e) {
-    res.status(400).json({ message: "Error" });
+    throw e;
+    // res.status(400).json({ message: "Error" });
   }
 };
 
@@ -129,14 +130,17 @@ export const createMessage = async (message) => {
 
 export const getMessages = () => {
   try {
-    return Message.find().limit(20);
+    return Message.find()
+      .sort({
+        createdAt: -1,
+      })
+      .limit(20);
   } catch (e) {
     console.log(e.message);
   }
 };
 
 export const getLastMessage = async (username) => {
-  // console.log("username!!!!!", username);
   try {
     const lastMessage = await Message.findOne({ username }).sort({
       createdAt: -1,
